@@ -1,8 +1,11 @@
 import React from 'react'
+import HeroSection from '../components/HeroSection'
 
 function Home() {
   return (
-    <div>Home</div>
+    <div className="m-20">
+      <HeroSection/>
+    </div>
   )
 }
 
