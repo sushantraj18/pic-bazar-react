@@ -12,6 +12,7 @@ function GsapTransition() {
     const nodeRef = useRef(null)
     const location = useLocation();
     // console.log("location is ",location)
+    
 
     useEffect(()=>{
         if(nodeRef.current){
