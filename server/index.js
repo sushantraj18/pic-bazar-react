@@ -3,6 +3,7 @@
 // 1 call express in this file
 const express = require("express")
 const dotenv = require('dotenv')
+const cors = require('cors')
 const {readdirSync} = require("fs")
 const { connectDb } = require("./connection")
 
@@ -19,6 +20,8 @@ const app = express()
 // 3 define port 
 const PORT = process.env.PORT || 5000
 connectDb()
+app.use(express.json())
+app.use(cors())
 
 app.get("/",(req,res)=>{
     res.send("<h1>Radhey radhey </h1>")

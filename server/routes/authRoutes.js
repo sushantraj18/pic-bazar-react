@@ -12,11 +12,11 @@ route.post('/login',login)
 route.post('/signup',signup)
 
 
-route.get("/new",(req,res)=>{
-    res.json({
-        message : "acount created",name:"sushant raj"
-    })
-})
+// route.post("/new",(req,res)=>{
+//     res.json({
+//         message : "acount created",name:"sushant raj"
+//     })
+// })
 
 
 module.exports = route
