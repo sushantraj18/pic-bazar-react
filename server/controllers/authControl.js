@@ -1,6 +1,8 @@
 const User = require("../models/User")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
+const { genrateAccessToken } = require("../helper/accessToken")
+const { refreshGenrateToken } = require("../helper/refreshToken")
 
 const signup = async (req,res)=>{
 
@@ -37,7 +39,51 @@ const signup = async (req,res)=>{
 }
 
 
-const login = async (req,res)=>{}
+const login = async (req,res)=>{
+
+    const {email,password} = req.body
+
+    try {
+        let user = await User.findOne({email})
+
+        if(!user){
+            return res.status(400).json({
+                success:false,
+                message : "please signup"
+            })
+        }
+
+        const matchPassword = await bcrypt.compare(password,user.password);
+
+        if(!matchPassword) return res.status(400).json({success:false,message:"invalid creadentials"})
+
+
+            const data = {
+                id : user._id
+                ,accountType : user.accountType,
+                author:user.username
+            }
+
+            const accessToken = genrateAccessToken(data)
+            const refreshToken = refreshGenrateToken(data)
+
+            return res.status(200).json({
+                success : true,
+                message : "Login successful",
+                accessToken:accessToken,
+                refreshToken : refreshToken,
+                role : user.accountType,
+                author : user.username
+            })
+
+    } catch (error) {
+        return res.status(500).json({
+            success:false,
+            message:error.message
+        })
+    }
+
+}
 
 
 module.exports = {login,signup}
