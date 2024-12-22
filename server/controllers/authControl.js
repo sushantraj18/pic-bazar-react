@@ -19,7 +19,7 @@ const signup = async (req,res)=>{
 
         user = new User({
             username,
-            password:newSecurePassword,
+            password : newSecurePassword,
             email,
             accountType,
         }) 
