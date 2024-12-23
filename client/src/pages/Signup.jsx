@@ -32,7 +32,7 @@ const handleSubmit = async (e)=>{
       try{        
   
         const res = await axios.post(import.meta.env.VITE_API_URL + "/signup",userInfo)
-        console.log(userInfo)
+        // console.log(userInfo)
         const data = await res.data
         if(data.success === true){
           toast.success(data.message);
