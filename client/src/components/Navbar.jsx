@@ -1,9 +1,12 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link,useLocation} from 'react-router-dom'
+
+
 
 function Navbar() {
+  const {pathname} = useLocation()
   return (
-    <div className="flex px-4 py-5 fixed top-0 right-0 left-0 shadow-md gap-1 sm:gap-0 items-start sm:items-center flex-col sm:flex-row bg-white justify-between">
+    <div className= {`flex px-4 py-5 ${pathname === "/seller/profile" || pathname === "/buyer/profile" ? "hidden" : "fixed"} top-0 right-0 left-0 shadow-md gap-1 sm:gap-0 items-start sm:items-center flex-col sm:flex-row bg-white justify-between`}>
       <div >
         <Link className='font-bold text-3xl' to={"/"}>PicBazar</Link>
       </div>
