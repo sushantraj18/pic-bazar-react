@@ -19,7 +19,7 @@ function DashboardSidebar() {
     const { pathname } = useLocation()
     console.log(tab)
     return (
-        <nav className={` fixed z-10 ${!sidebar == true ? "-translate-x-[500px] sm:translate-x-0" : "translate-x-0"} flex text-lg font-semibold bg-white min-h-screen w-fit shadow-lg flex-col gap-2 p-3 list-none justify-between items-center `}>
+        <nav className={` fixed z-10 ${!sidebar == true ? "-translate-x-[500px] sm:translate-x-0" : "translate-x-0"} ease-in-out duration-300 sm:static flex text-lg font-semibold bg-white min-h-screen w-fit shadow-lg flex-col gap-2 p-3 list-none justify-between items-center `}>
             <div>
                 <div className="bg-black rounded-full my-5 w-fit py-5 px-6 text-white">
                     {author.charAt(0).toUpperCase()}
